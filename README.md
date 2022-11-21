@@ -1,6 +1,7 @@
 # Frontend React Project - Posts
 
-This is an extra and optional React project to improve your skills with React. It is a simple project that allows you to create posts and view them. It is a good project to practice your skills with React and Redux.
+This is an extra and optional React project to improve your skills with React.
+It is a simple project that allows you to fetch posts from a server and display them in a list.It is a good project to practice your skills with React and Redux.
 
 ## Instructions
 
@@ -13,8 +14,10 @@ You need to install the css library yourself.
 ### Step 1
 
 - Fetch all the posts and return the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts)
+- Fetch all the users and return the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users)
+- Fetch all the comments and return the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/comments)
 
-- Given a post id as argument, returns the data about that post and user. If the postor user doesn't exist, return an error message.
+- Given a post, user or comment id return the corresponding data from the server
 
 ### Step 2
 
@@ -25,9 +28,9 @@ You need to install the css library yourself.
 
 - Integrate react router into your project and create atleast 2 pages:
   - `HomePage`: renders the list of posts
-  - `UsersPage`: renders the list of users (you can fetch the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users))
+  - `UsersPage`: renders the list of users
   - `singleUserPage`: renders specific user data and their posts
-  - `PostPage`: renders the details of a post (title, body, comments)
+  - `PostPage`: renders the details of a post (title, body, comments and other details)
 
 ### Step 4
 
@@ -43,6 +46,8 @@ Take your time to implement the following features:
 - Add a button to the `HomePage` that allows you to add a new post
 - Add listing of of nested resources (comments) to the `PostPage`
 - Add more features and make the project look good. You can use any css library you want (css, scss, Material UI, etc.)
+- Add and remove comments from a post
+
 
 ## References
 
