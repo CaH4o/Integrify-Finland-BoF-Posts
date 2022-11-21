@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+# Frontend React Project - Posts
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This is an extra and optional React project to improve your skills with React. It is a simple project that allows you to create posts and view them. It is a good project to practice your skills with React and Redux.
 
-## Available Scripts
+## Instructions
 
-In the project directory, you can run:
+### General
 
-### `npm start`
+Fork this repo, then clone the **fork** to your machine and start working on it. You can open a pull request as soon as possible (no need to wait until finished)
+For styling, you can use whatever css solution you want: css, scss, Material UI, etc.
+You need to install the css library yourself.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Step 1
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Fetch all the posts and return the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts)
 
-### `npm test`
+- Given a post id as argument, returns the data about that post and user. If the postor user doesn't exist, return an error message.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Step 2
 
-### `npm run build`
+- Render the data of all the posts and users (from Step 1). you can use any css library you want (css, scss, Material UI, etc.)
+- Make sure to split the component into smaller components (e.g. Post, PostList, etc.)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Step 3
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Integrate react router into your project and create atleast 2 pages:
+  - `HomePage`: renders the list of posts
+  - `UsersPage`: renders the list of users (you can fetch the data from [JSONPlaceholder](https://jsonplaceholder.typicode.com/users))
+  - `singleUserPage`: renders specific user data and their posts
+  - `PostPage`: renders the details of a post (title, body, comments)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Step 4
 
-### `npm run eject`
+- Set up all the redux boilerblate for the project
+- Everything related to redux stays in one folder: reducers, store
+- Think about what reducer you're going to make and write them accordingly
+- Move the state that contains all posts, users and comments to redux store
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Step 5
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Take your time to implement the following features:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Add a button to the `HomePage` that allows you to add a new post
+- Add listing of of nested resources (comments) to the `PostPage`
+- Add more features and make the project look good. You can use any css library you want (css, scss, Material UI, etc.)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## References
 
-## Learn More
+Homepage:
+![homepage/all posts](media/HomePage.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Users page:
+![all users Page](media/UsersPage.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Single Post page:
+![single users Page](media/SinglePostPage.png)
+
+Single User page:
+![single user Page](media/SingleUserPage.png)
