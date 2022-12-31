@@ -1,5 +1,5 @@
-import React from "react"
-import "./App.css"
+import React from "react";
+import "./styles/App.css";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         placeholder API and displays them in different pages.
       </p>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

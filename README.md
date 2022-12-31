@@ -1,7 +1,7 @@
 # Frontend React Project - Posts
 
 This is an extra and optional React project to improve your skills with React.
-It is a simple project that allows you to fetch posts from a server and display them in a list.It is a good project to practice your skills with React and Redux.
+It is a simple project that allows you to fetch posts from a server and display them in a list.It is a good project to practice your skills with React and Redux.`
 
 ## Instructions
 
