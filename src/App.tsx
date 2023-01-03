@@ -1,7 +1,6 @@
-import React from "react";
 import "./styles/App.css";
 
-function App() {
+export default function App() {
   return (
     <div className="App">
       <header className="App-header">React Posts App - Extra assignment</header>
@@ -12,5 +11,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
