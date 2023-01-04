@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function singleUser() {
+export default function SingleUser() {
   return (
     <div>singleUser</div>
   )
