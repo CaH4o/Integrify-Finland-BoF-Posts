@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { Box } from "@mui/material";
 
-import { useAppDispatch } from "../app/hooks";
-import Header from "../components/Header";
+import { useAppDispatch } from "../redux/hooks";
 import { usersFetch } from "../redux/reducers/users";
 import { commentsFetch } from "../redux/reducers/comments";
 import { postsFetch } from "../redux/reducers/posts";
+import Header from "../components/Header";
 import Main from "../components/posts/Main";
 
 export default function (): JSX.Element {

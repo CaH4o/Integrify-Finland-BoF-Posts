@@ -1,20 +1,70 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 
-import useQueries from "../../app/queries";
-import { Queries, QueryPost, QueryPosts } from "../../types/Queries";
+import { RootState } from "../../redux/store";
+import { Comment, Comments } from "../../types/Comments";
+import { Post, Posts } from "../../types/Posts";
+import { User, Users } from "../../types/Users";
+import { PropPostsCard } from "../../types/Props";
+import { useAppSelector } from "../../redux/hooks";
+import { LoadingStatus } from "../../types/States";
 import MainCard from "./MainCard";
 import MainSrearch from "./MainSrearch";
 
-export default function Main() {
-  const [posts, setPosts] = useState<QueryPosts>(useQueries(Queries.Posts));
+export default function Main(): JSX.Element {
+  const [search, setSearch] = useState<string>("");
+  const [renderPosts, setPosts] = useState<Posts>([]);
+  const state: RootState = useAppSelector(function (state) {
+    return state;
+  });
+  const posts: Posts = state.posts.data;
+  const users: Users = state.users.data;
+  const comments: Comments = state.comments.data;
+
+  useEffect(
+    function () {
+      if (
+        state.posts.loadingStatus === LoadingStatus.Completed &&
+        state.users.loadingStatus === LoadingStatus.Completed &&
+        state.comments.loadingStatus === LoadingStatus.Completed
+      ) {
+        setPosts(posts);
+      }
+    },
+    [posts, comments, users]
+  );
+
+  useEffect(
+    function () {
+      const searchPosts: Posts = posts.filter(function (p: Post) {
+        return p.title.toLowerCase().includes(search.toLowerCase());
+      });
+      setPosts(searchPosts);
+    },
+    [search]
+  );
+
+  function PropPosts(post: Post): PropPostsCard {
+    const user: User = users.find(function (u: User) {
+      return u.id === post.userId;
+    })!;
+    const countComments: number = comments.reduce(function (
+      prev: number,
+      c: Comment
+    ) {
+      return prev + (c.postId === post.id ? 1 : 0);
+    },
+    0);
+    return { ...post, user, countComments };
+  }
 
   return (
     <Box component="div">
-      <MainSrearch setPosts={setPosts} />
-      {posts.length ? (
-        posts.map(function (post: QueryPost) {
-          return <MainCard key={post.id} {...post} />;
+      <MainSrearch setSearch={setSearch} search={search} />
+      {renderPosts.length ? (
+        renderPosts.map(function (post: Post) {
+          const propPosts: PropPostsCard = PropPosts(post);
+          return <MainCard key={post.id} {...propPosts} />;
         })
       ) : (
         <p>No data posts</p>

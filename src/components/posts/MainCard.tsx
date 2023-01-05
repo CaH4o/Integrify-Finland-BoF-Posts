@@ -1,8 +1,6 @@
-import React from "react";
+import { PropPostsCard } from "../../types/Props";
 
-import { QueryPost } from "../../types/Queries";
-
-export default function MainCard(post: QueryPost): JSX.Element {
+export default function MainCard(post: PropPostsCard): JSX.Element {
   return (
     <div>
       <p>{`Title:${post.title}; User:${post.user.username}; Comments:${post.countComments}.`}</p>
