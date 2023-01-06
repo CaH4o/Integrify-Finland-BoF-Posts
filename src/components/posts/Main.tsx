@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 import { RootState } from "../../redux/store";
 import { Comment, Comments } from "../../types/Comments";
@@ -61,14 +61,31 @@ export default function Main(): JSX.Element {
   return (
     <Box component="div">
       <MainSrearch setSearch={setSearch} search={search} />
-      {renderPosts.length ? (
-        renderPosts.map(function (post: Post) {
-          const propPosts: PropPostsCard = PropPosts(post);
-          return <MainCard key={post.id} {...propPosts} />;
-        })
-      ) : (
-        <p>No data posts</p>
-      )}
+      <Grid container spacing={2}>
+        {renderPosts.length ? (
+          renderPosts.map(function (post: Post) {
+            const propPosts: PropPostsCard = PropPosts(post);
+
+            return (
+              <Grid
+                item
+                key={post.id}
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                spacing={1}
+                display="flex"
+                justifyContent="center"
+              >
+                <MainCard {...propPosts} />
+              </Grid>
+            );
+          })
+        ) : (
+          <p>No data posts</p>
+        )}
+      </Grid>
     </Box>
   );
 }
