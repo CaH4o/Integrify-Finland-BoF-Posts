@@ -1,7 +1,12 @@
-import React from 'react'
+import { Box } from "@mui/material";
 
-export default function SingleUser() {
+import Header from "../components/Header";
+
+export default function SingleUser(): JSX.Element {
   return (
-    <div>singleUser</div>
-  )
+    <Box component="div">
+      <Header />
+      <div>singleUser</div>
+    </Box>
+  );
 }

@@ -37,3 +37,19 @@
 .Active {
   color: #3c81f6;
 }
+
+.LinkLine {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #3c81f6;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.LinkLine::first-letter {
+  text-transform: capitalize;
+}
+
+.TextEll {
+  text-overflow: ellipsis;
+}
