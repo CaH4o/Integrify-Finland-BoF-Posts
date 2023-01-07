@@ -61,11 +61,10 @@ export default function Main(): JSX.Element {
   return (
     <Box component="div">
       <MainSrearch setSearch={setSearch} search={search} />
-      <Grid container spacing={2}>
-        {renderPosts.length ? (
-          renderPosts.map(function (post: Post) {
+      {renderPosts.length ? (
+        <Grid container spacing={2}>
+          {renderPosts.map(function (post: Post) {
             const propPosts: PropPostsCard = PropPosts(post);
-
             return (
               <Grid
                 item
@@ -74,18 +73,17 @@ export default function Main(): JSX.Element {
                 sm={6}
                 md={4}
                 lg={3}
-                spacing={1}
                 display="flex"
                 justifyContent="center"
               >
                 <MainCard {...propPosts} />
               </Grid>
             );
-          })
-        ) : (
-          <p>No data posts</p>
-        )}
-      </Grid>
+          })}
+        </Grid>
+      ) : (
+        <p>No data posts</p>
+      )}
     </Box>
   );
 }

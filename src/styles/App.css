@@ -38,8 +38,11 @@
   color: #3c81f6;
 }
 
-.LinkLine {
+.PostsPad {
   padding: 0.5rem 1rem;
+}
+
+.LinkLine {
   text-decoration: none;
   color: #3c81f6;
   overflow: hidden;
@@ -52,4 +55,13 @@
 
 .TextEll {
   text-overflow: ellipsis;
+}
+
+.TextCard {
+  padding: 0;
+  margin: 0;
+}
+
+.TextLeft {
+  text-align: left;
 }

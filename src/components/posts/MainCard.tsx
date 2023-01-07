@@ -2,25 +2,24 @@ import {
   Card,
   CardActions,
   CardContent,
-  Button,
   Badge,
   Typography,
 } from "@mui/material";
 import ForumIcon from "@mui/icons-material/Forum";
+import { Link } from "react-router-dom";
 
 import { PropPostsCard } from "../../types/Props";
-import { Link } from "react-router-dom";
 
 export default function MainCard(post: PropPostsCard): JSX.Element {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 400, m: "2rem" }}>
       <CardActions>
-        <Link to={`${post.id}`} className="LinkLine TextEll">
+        <Link to={`${post.id}`} className="LinkLine TextEll PostsPad">
           {post.title}
         </Link>
       </CardActions>
       <hr style={{ width: "90%", color: "lightgray" }} />
-      <CardContent>
+      <CardContent className="TextEll" sx={{height: "100px"}}>
         <Typography variant="body2">{post.body}</Typography>
       </CardContent>
       <hr style={{ width: "90%", color: "lightgray" }} />
