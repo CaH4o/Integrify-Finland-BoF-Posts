@@ -20,7 +20,10 @@ const usersSlice = createSlice({
       .addCase(
         usersFetch.fulfilled,
         function (state: UsersState, action: PayloadAction<Users>) {
-          state.data = action.payload;
+          const users: Users = Array.isArray(action.payload)
+            ? action.payload
+            : [action.payload];
+          state.data = users;
           state.loadingStatus = LoadingStatus.Completed;
         }
       );
@@ -29,8 +32,8 @@ const usersSlice = createSlice({
 
 export const usersFetch = createAsyncThunk(
   "usersFetch",
-  async function (): Promise<Users> {
-    return await fetchData<Users>(Url.Users);
+  async function (urlAdd: string): Promise<Users> {
+    return await fetchData<Users>(Url.Users, urlAdd);
   }
 );
 

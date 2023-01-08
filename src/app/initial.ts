@@ -7,21 +7,21 @@ import {
 
 export function usersInitialState(): UsersState {
   return {
-    loadingStatus: LoadingStatus.NotStarted,
+    loadingStatus: LoadingStatus.Idle,
     data: [],
   };
 }
 
 export function postsInitialState(): PostsState {
   return {
-    loadingStatus: LoadingStatus.NotStarted,
+    loadingStatus: LoadingStatus.Idle,
     data: [],
   };
 }
 
 export function commentsInitialState(): CommentsState {
   return {
-    loadingStatus: LoadingStatus.NotStarted,
+    loadingStatus: LoadingStatus.Idle,
     data: [],
   };
 }

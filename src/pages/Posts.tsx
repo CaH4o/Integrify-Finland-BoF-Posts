@@ -12,9 +12,9 @@ export default function (): JSX.Element {
   const dispatch = useAppDispatch();
 
   useEffect(function () {
-    dispatch(usersFetch());
-    dispatch(postsFetch());
-    dispatch(commentsFetch());
+    dispatch(usersFetch(""));
+    dispatch(postsFetch(""));
+    dispatch(commentsFetch(""));
   }, []);
 
   return (

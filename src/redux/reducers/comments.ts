@@ -20,7 +20,10 @@ const commentsSlice = createSlice({
       .addCase(
         commentsFetch.fulfilled,
         function (state: CommentsState, action: PayloadAction<Comments>) {
-          state.data = action.payload;
+          const commnts: Comments = Array.isArray(action.payload)
+            ? action.payload
+            : [action.payload];
+          state.data = commnts;
           state.loadingStatus = LoadingStatus.Completed;
         }
       );
@@ -29,8 +32,8 @@ const commentsSlice = createSlice({
 
 export const commentsFetch = createAsyncThunk(
   "commentsFetch",
-  async function (): Promise<Comments> {
-    return await fetchData<Comments>(Url.Comments);
+  async function (urlAdd: string): Promise<Comments> {
+    return await fetchData<Comments>(Url.Comments, urlAdd);
   }
 );
 

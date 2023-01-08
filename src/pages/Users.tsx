@@ -11,8 +11,8 @@ export default function Users() {
   const dispatch = useAppDispatch();
 
   useEffect(function () {
-    dispatch(usersFetch());
-    dispatch(postsFetch());
+    dispatch(usersFetch(""));
+    dispatch(postsFetch(""));
   }, []);
 
   return (

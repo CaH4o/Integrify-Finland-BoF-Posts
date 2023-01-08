@@ -20,7 +20,10 @@ const postsSlice = createSlice({
       .addCase(
         postsFetch.fulfilled,
         function (state: PostsState, action: PayloadAction<Posts>) {
-          state.data = action.payload;
+          const posts: Posts = Array.isArray(action.payload)
+            ? action.payload
+            : [action.payload];
+          state.data = posts;
           state.loadingStatus = LoadingStatus.Completed;
         }
       );
@@ -29,8 +32,8 @@ const postsSlice = createSlice({
 
 export const postsFetch = createAsyncThunk(
   "postsFetch",
-  async function (): Promise<Posts> {
-    return await fetchData<Posts>(Url.Posts);
+  async function (urlAdd: string): Promise<Posts> {
+    return await fetchData<Posts>(Url.Posts, urlAdd);
   }
 );
 

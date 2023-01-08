@@ -11,9 +11,9 @@ const urls: Map<Url, string> = new Map()
   .set(Url.Posts, "https://jsonplaceholder.typicode.com/posts")
   .set(Url.Comments, "https://jsonplaceholder.typicode.com/comments");
 
-export async function fetchData<T>(url: Url): Promise<T> {
-  const _url: string = urls.get(url)!;
-  const response = await axios.get(_url);
+export async function fetchData<T>(urlMain: Url, urlAdd: string): Promise<T> {
+  const url: string = urls.get(urlMain)!.concat(urlAdd) ;
+  const response = await axios.get(url);
 
   if (response.status < 400) {
     return response.data;
