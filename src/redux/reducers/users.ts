@@ -8,7 +8,11 @@ import { fetchData, Url } from "../../app/api";
 const usersSlice = createSlice({
   name: "users",
   initialState: usersInitialState(),
-  reducers: {},
+  reducers: {
+    usersReset: function (status: UsersState) {
+      return usersInitialState();
+    },
+  },
   extraReducers: function (builder) {
     builder
       .addCase(usersFetch.pending, function (state: UsersState) {
@@ -38,5 +42,5 @@ export const usersFetch = createAsyncThunk(
 );
 
 const usersReducer = usersSlice.reducer;
-export const {} = usersSlice.actions;
+export const { usersReset } = usersSlice.actions;
 export default usersReducer;

@@ -16,3 +16,7 @@ export interface PropPostsSearch {
 export interface PropUsersCard extends User {
   countPosts: number;
 }
+
+export interface PropPost extends Post {
+  index: number;
+}

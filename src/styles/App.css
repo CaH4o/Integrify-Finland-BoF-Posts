@@ -44,7 +44,7 @@
 
 .LinkLine {
   text-decoration: none;
-  color: #3c81f6;
+  color: blue;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -64,4 +64,21 @@
 
 .TextLeft {
   text-align: left;
+}
+
+.TextUpp {
+  text-transform: uppercase;
+}
+
+.TextLink {
+  color: blue;
+  font-weight: bold;
+}
+
+.TextInLine {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.TextInLine::first-letter {
+  text-transform: capitalize;
 }

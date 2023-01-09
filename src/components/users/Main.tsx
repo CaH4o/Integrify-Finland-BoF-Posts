@@ -11,7 +11,7 @@ import MainCard from "./MainCard";
 
 export default function Main() {
   const [renderUsers, setUsers] = useState<Users>([]);
-  const state: RootState = useAppSelector(function (state) {
+  const state: RootState = useAppSelector(function (state: RootState) {
     return state;
   });
   const users: Users = state.users.data;

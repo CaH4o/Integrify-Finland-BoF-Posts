@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
+import ScrollToTop from "react-scroll-to-top";
 
 import { RootState } from "../../redux/store";
 import { Comment, Comments } from "../../types/Comments";
@@ -60,6 +61,7 @@ export default function Main(): JSX.Element {
 
   return (
     <Box component="div">
+            <ScrollToTop />
       <MainSrearch setSearch={setSearch} search={search} />
       {renderPosts.length ? (
         <Grid container spacing={2}>
