@@ -61,7 +61,7 @@ export default function Main(): JSX.Element {
 
   return (
     <Box component="div">
-            <ScrollToTop />
+      <ScrollToTop />
       <MainSrearch setSearch={setSearch} search={search} />
       {renderPosts.length ? (
         <Grid container spacing={2}>
