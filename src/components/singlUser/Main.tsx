@@ -38,14 +38,16 @@ export default function Main() {
   return (
     <>
       {isRender ? (
-        <Box>
-          <Box display="flex" flexDirection="column" alignItems="center">
-            <MainCard {...userCard} />
-            <Typography variant="h4" component="h4" className="LinkLine">
-              Posts by {user.name}
-            </Typography>
-          </Box>
-          <MainPosts />
+        <Box display="flex" flexDirection="column" alignItems="center">
+          <MainCard {...userCard} />
+          {posts.length > 1 ? (
+            <>
+              <Typography variant="h4" component="h4" className="LinkLine">
+                Posts by {user.name}
+              </Typography>
+              <MainPosts />
+            </>
+          ) : null}
         </Box>
       ) : null}
     </>

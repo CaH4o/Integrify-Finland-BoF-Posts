@@ -11,6 +11,7 @@ import { useAppSelector } from "../../redux/hooks";
 import { LoadingStatus } from "../../types/States";
 import MainCard from "./MainCard";
 import MainSrearch from "./MainSrearch";
+import MainAddPost from "./MainAddPost";
 
 export default function Main(): JSX.Element {
   const [search, setSearch] = useState<string>("");
@@ -62,7 +63,11 @@ export default function Main(): JSX.Element {
   return (
     <Box component="div">
       <ScrollToTop />
-      <MainSrearch setSearch={setSearch} search={search} />
+      <Box display="flex" justifyContent="space-around" alignItems="center">
+        <Box width="5%">{null}</Box>
+        <MainSrearch setSearch={setSearch} search={search} />
+        <MainAddPost />
+      </Box>
       {renderPosts.length ? (
         <Grid container spacing={2}>
           {renderPosts.map(function (post: Post) {
