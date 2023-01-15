@@ -22,8 +22,8 @@ export default function SinglePost(): JSX.Element {
   });
 
   useEffect(function () {
+    dispatch(commentsReset());
     dispatch(postsFetch(urlPost));
-    dispatch(commentsFetch(urlComment));
     if (state.users.loadingStatus === LoadingStatus.Completed)
       dispatch(usersReset());
   }, []);
@@ -40,6 +40,7 @@ export default function SinglePost(): JSX.Element {
         const urlUser: string = `/${userID.toString()}`;
         dispatch(usersFetch(urlUser));
         dispatch(postsFetch(urlPosts));
+        dispatch(commentsFetch(urlComment));
       }
     },
     [state.users.loadingStatus, state.posts.loadingStatus]
@@ -51,4 +52,7 @@ export default function SinglePost(): JSX.Element {
       <Main id={params.id || ""} />
     </Box>
   );
+}
+function commentsReset(): any {
+  throw new Error("Function not implemented.");
 }

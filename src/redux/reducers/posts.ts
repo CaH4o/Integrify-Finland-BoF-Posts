@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Posts } from "../../types/Posts";
+import { Post, Posts } from "../../types/Posts";
 import { LoadingStatus, PostsState } from "../../types/States";
 import { postsInitialState } from "../../app/initial";
-import { fetchData, Url } from "../../app/api";
+import { fetchData, postData, Url } from "../../app/api";
 
 const postsSlice = createSlice({
   name: "posts",
@@ -31,6 +31,22 @@ const postsSlice = createSlice({
           state.loadingStatus = LoadingStatus.Completed;
         }
       );
+    builder
+      .addCase(postPost.pending, function (state: PostsState) {
+        state.loadingStatus = LoadingStatus.Posting;
+      })
+      .addCase(postPost.rejected, function (state: PostsState) {
+        state.loadingStatus = LoadingStatus.Error;
+      })
+      .addCase(
+        postPost.fulfilled,
+        function (state: PostsState, action: PayloadAction<Post>) {
+          state.loadingStatus = LoadingStatus.Completed;
+          const post: Post = action.payload;
+          post.id = state.data.length + 1;
+          state.data = [...state.data, post];
+        }
+      );
   },
 });
 
@@ -38,6 +54,13 @@ export const postsFetch = createAsyncThunk(
   "postsFetch",
   async function (urlAdd: string): Promise<Posts> {
     return await fetchData<Posts>(Url.Posts, urlAdd);
+  }
+);
+
+export const postPost = createAsyncThunk(
+  "postPost",
+  async function (post: Post): Promise<Post> {
+    return await postData<Post>(Url.Posts, "", post);
   }
 );
 

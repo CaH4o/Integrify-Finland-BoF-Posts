@@ -5,6 +5,7 @@ import { Users } from "./Users";
 export enum LoadingStatus {
   Idle = 0,
   Loading = 100,
+  Posting = 101,
   Completed = 200,
   Error = 400,
 }

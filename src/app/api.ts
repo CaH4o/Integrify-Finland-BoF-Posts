@@ -28,7 +28,6 @@ export async function postData<T>(
   data: T
 ): Promise<T> {
   const url: string = urls.get(urlMain)!.concat(urlAdd);
-  //const body: string = JSON.stringify(data);
   const response = await axios.post(url, data);
 
   if (response.status < 400) {

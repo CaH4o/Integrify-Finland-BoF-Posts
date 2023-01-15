@@ -8,7 +8,11 @@ import { fetchData, Url } from "../../app/api";
 const commentsSlice = createSlice({
   name: "users",
   initialState: commentsInitialState(),
-  reducers: {},
+  reducers: {
+    commentReset: function (status: CommentsState) {
+      return commentsInitialState();
+    },
+  },
   extraReducers: function (builder) {
     builder
       .addCase(commentsFetch.pending, function (state: CommentsState) {

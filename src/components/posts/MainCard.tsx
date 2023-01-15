@@ -27,7 +27,7 @@ export default function MainCard(post: PropPostsCard): JSX.Element {
         sx={{ display: "flex", justifyContent: "space-between", p: "1rem" }}
       >
         <Link to={`../users/${post.user.id}`} className="LinkLine">
-          By {post.user.username}
+          By {post.user.name}
         </Link>
         <Badge badgeContent={post.countComments} color="info">
           <ForumIcon />
