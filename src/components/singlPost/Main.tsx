@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Box, Typography, Link as MUILink, Badge, Card } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Link as MUILink,
+  Badge,
+  Card,
+  Button,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import ForumIcon from "@mui/icons-material/Forum";
 import ScrollToTop from "react-scroll-to-top";
@@ -65,6 +72,7 @@ export default function Main(params: { id: string }): JSX.Element {
             margin="0.5rem 0 0 0"
           >
             <Box className="TextLink">Comments ({comments.length})</Box>
+            <Button variant="outlined">Add a comment</Button>
             <Badge badgeContent={comments.length} color="info">
               <ForumIcon />
             </Badge>

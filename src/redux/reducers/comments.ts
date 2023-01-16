@@ -9,7 +9,7 @@ const commentsSlice = createSlice({
   name: "users",
   initialState: commentsInitialState(),
   reducers: {
-    commentReset: function (status: CommentsState) {
+    commentsReset: function (status: CommentsState) {
       return commentsInitialState();
     },
   },
@@ -42,5 +42,5 @@ export const commentsFetch = createAsyncThunk(
 );
 
 const commentsReducer = commentsSlice.reducer;
-export const {} = commentsSlice.actions;
+export const { commentsReset } = commentsSlice.actions;
 export default commentsReducer;

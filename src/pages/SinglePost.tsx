@@ -8,7 +8,7 @@ import { LoadingStatus } from "../types/States";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { usersFetch, usersReset } from "../redux/reducers/users";
 import { postsFetch } from "../redux/reducers/posts";
-import { commentsFetch } from "../redux/reducers/comments";
+import { commentsFetch, commentsReset } from "../redux/reducers/comments";
 import Header from "../components/Header";
 import Main from "../components/singlPost/Main";
 
@@ -53,6 +53,4 @@ export default function SinglePost(): JSX.Element {
     </Box>
   );
 }
-function commentsReset(): any {
-  throw new Error("Function not implemented.");
-}
+
