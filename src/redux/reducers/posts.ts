@@ -43,7 +43,7 @@ const postsSlice = createSlice({
         function (state: PostsState, action: PayloadAction<Post>) {
           state.loadingStatus = LoadingStatus.Completed;
           const post: Post = action.payload;
-          post.id = state.data.length + 1;
+          post.id = new Date().getUTCMilliseconds();
           state.data = [...state.data, post];
         }
       );

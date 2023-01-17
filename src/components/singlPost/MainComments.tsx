@@ -2,8 +2,21 @@ import { Avatar, Box, Typography, Button } from "@mui/material";
 import SpeakerNotesOffIcon from "@mui/icons-material/SpeakerNotesOff";
 
 import { Comment } from "../../types/Comments";
+import { useAppDispatch } from "../../redux/hooks";
+import {
+  commentDelete,
+  commentDeleteThunk,
+} from "../../redux/reducers/comments";
 
 export default function MainComments(comment: Comment): JSX.Element {
+  const dispatch = useAppDispatch();
+
+  function handleDeleteComment() {
+    const urlComment: string = `/${comment.id}`;
+    dispatch(commentDeleteThunk(urlComment));
+    dispatch(commentDelete(comment));
+  }
+
   return (
     <Box
       sx={{
@@ -56,6 +69,7 @@ export default function MainComments(comment: Comment): JSX.Element {
           alignSelf: "center",
           padding: "1rem",
         }}
+        onClick={handleDeleteComment}
       >
         <SpeakerNotesOffIcon />
       </Button>

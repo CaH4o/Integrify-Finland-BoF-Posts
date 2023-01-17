@@ -36,3 +36,14 @@ export async function postData<T>(
     throw new Error(response.status.toString() + "" + response.statusText);
   }
 }
+
+export async function deletData<T>(urlMain: Url, urlAdd: string): Promise<T> {
+  const url: string = urls.get(urlMain)!.concat(urlAdd);
+  const response = await axios.delete(url);
+
+  if (response.status < 400) {
+    return response.data;
+  } else {
+    throw new Error(response.status.toString() + "" + response.statusText);
+  }
+}

@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import {
-  Box,
-  Typography,
-  Link as MUILink,
-  Badge,
-  Card,
-  Button,
-} from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, Link as MUILink, Badge, Card } from "@mui/material";
 import { Link } from "react-router-dom";
 import ForumIcon from "@mui/icons-material/Forum";
 import ScrollToTop from "react-scroll-to-top";
 
 import { Post, Posts } from "../../types/Posts";
+import { PropPost } from "../../types/Props";
 import { User } from "../../types/Users";
 import { Comments, Comment } from "../../types/Comments";
 import { useAppSelector } from "../../redux/hooks";
@@ -20,10 +14,9 @@ import { LoadingStatus } from "../../types/States";
 import MainPost from "./MainPost";
 import MainComments from "./MainComments";
 import MainPosts from "./MainPosts";
-import { PropPost } from "../../types/Props";
+import MainAddComment from "./MainAddComment";
 
 export default function Main(params: { id: string }): JSX.Element {
-  const [isRender, setRender] = useState<boolean>(false);
   const [showComments, setShowComments] = useState<number>(3);
   const state: RootState = useAppSelector(function (state: RootState) {
     return state;
@@ -34,21 +27,12 @@ export default function Main(params: { id: string }): JSX.Element {
   })!;
   const user: User = state.users.data[0];
   const comments: Comments = state.comments.data;
-
-  useEffect(
-    function () {
-      if (
-        state.posts.loadingStatus === LoadingStatus.Completed &&
-        state.users.loadingStatus === LoadingStatus.Completed &&
-        state.comments.loadingStatus === LoadingStatus.Completed
-      ) {
-        setRender(true);
-      } else {
-        setRender(false);
-      }
-    },
-    [state]
-  );
+  const postsLoaded: boolean =
+    state.posts.loadingStatus === LoadingStatus.Completed;
+  const usersLoaded: boolean =
+    state.users.loadingStatus === LoadingStatus.Completed;
+  const commentsLoaded: boolean =
+    state.comments.loadingStatus === LoadingStatus.Completed;
 
   return (
     <Box
@@ -58,12 +42,13 @@ export default function Main(params: { id: string }): JSX.Element {
       flexDirection="column"
       alignItems="center"
     >
-      {isRender ? (
+      {postsLoaded && usersLoaded ? (
         <>
           <ScrollToTop />
           <Box component="div" role="article" width="90%">
             <MainPost {...post} />
           </Box>
+
           <Box
             component="div"
             display="flex"
@@ -72,29 +57,34 @@ export default function Main(params: { id: string }): JSX.Element {
             margin="0.5rem 0 0 0"
           >
             <Box className="TextLink">Comments ({comments.length})</Box>
-            <Button variant="outlined">Add a comment</Button>
+            <MainAddComment />
             <Badge badgeContent={comments.length} color="info">
               <ForumIcon />
             </Badge>
           </Box>
-          <Box
-            component="div"
-            bgcolor="fff"
-            margin="1rem 0"
-            sx={{ width: "90%", bgcolor: "#fff" }}
-          >
-            <Card sx={{ bgcolor: "#fff", padding: "0 0 1rem 0" }}>
-              {comments.slice(0, showComments).map(function (comment: Comment) {
-                return <MainComments key={comment.id} {...comment} />;
-              })}
-              {comments.length > showComments ? (
-                <MUILink onClick={() => setShowComments(showComments + 3)}>
-                  Read more {comments.length % 3}{" "}
-                  {comments.length % 3 === 1 ? "comment" : "comments"}
-                </MUILink>
-              ) : null}
-            </Card>
-          </Box>
+
+          {commentsLoaded ? (
+            <Box
+              component="div"
+              bgcolor="fff"
+              margin="1rem 0"
+              sx={{ width: "90%", bgcolor: "#fff" }}
+            >
+              <Card sx={{ bgcolor: "#fff", padding: "0 0 1rem 0" }}>
+                {comments
+                  .slice(0, showComments)
+                  .map(function (comment: Comment) {
+                    return <MainComments key={comment.id} {...comment} />;
+                  })}
+                {comments.length > showComments ? (
+                  <MUILink onClick={() => setShowComments(showComments + 3)}>
+                    Read more {comments.length % 3}{" "}
+                    {comments.length % 3 === 1 ? "comment" : "comments"}
+                  </MUILink>
+                ) : null}
+              </Card>
+            </Box>
+          ) : null}
 
           {posts.length > 1 ? (
             <>
