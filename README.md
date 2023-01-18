@@ -1,5 +1,24 @@
-# Frontend React Project - Posts
+# Name of the project: 
+Frontend React Project - Posts
 
+## Link to the demo: 
+[https://cah4o.github.io/bof-posts/](https://cah4o.github.io/bof-posts/) 
+
+## Tech stack: 
+- HTML;
+- CSS;
+- Typescript;
+- React with Redux, React Router, Material UI, Axios; 
+- REST API.
+
+## Description:
+The extra assignment under the BOF program. All requirements from the Integrify academy are described below.
+The site consists of several pages, showing all posts, a single selected post, all users and a single selected user. To redirection I used a React Router Dom (AppRouter.ts).
+Reducers and the global storag were implemented to work with posts, users and comments (redux folder). All data fetched by using axios (api.ts) and thunk functions in reducers through fake REST API. All data types and interface in (types folder). Implement the creation a post, creation/removing a comment, but the API not allow to change the data and it is saved temporarily.
+
+
+## Requirement from the acadamy:
+### Introduction
 This is an extra and optional React project to improve your skills with React.
 It is a simple project that allows you to fetch posts from a server and display them in a list.It is a good project to practice your skills with React and Redux.`
 

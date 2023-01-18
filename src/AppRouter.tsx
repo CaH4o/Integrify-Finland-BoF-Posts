@@ -45,7 +45,7 @@ export default function AppRouter(): JSX.Element {
       },
     ],
     {
-      basename: "/",
+      basename: "/bof-posts/",
     }
   );
 
