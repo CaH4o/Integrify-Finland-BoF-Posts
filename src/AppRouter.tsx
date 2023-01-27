@@ -6,6 +6,7 @@ import SinglePost from "./pages/SinglePost";
 import Users from "./pages/Users";
 import SingleUser from "./pages/SingleUser";
 import Error from "./pages/Error";
+import AppPage from "./pages/AppPage";
 
 export default function AppRouter(): JSX.Element {
   const router = createBrowserRouter(
@@ -17,6 +18,7 @@ export default function AppRouter(): JSX.Element {
       },
       {
         path: "posts",
+        element: <AppPage />,
         children: [
           {
             index: true,
@@ -31,6 +33,7 @@ export default function AppRouter(): JSX.Element {
       },
       {
         path: "users",
+        element: <AppPage />,
         children: [
           {
             index: true,
@@ -45,7 +48,7 @@ export default function AppRouter(): JSX.Element {
       },
     ],
     {
-      basename: "/bof-posts/",
+      basename: "/bof-posts",
     }
   );
 

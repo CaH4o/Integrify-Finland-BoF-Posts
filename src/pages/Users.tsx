@@ -4,7 +4,6 @@ import { Box } from "@mui/material";
 import { useAppDispatch } from "../redux/hooks";
 import { usersFetch } from "../redux/reducers/users";
 import { postsFetch } from "../redux/reducers/posts";
-import Header from "../components/Header";
 import Main from "../components/users/Main";
 
 export default function Users() {
@@ -17,7 +16,6 @@ export default function Users() {
 
   return (
     <Box component="div">
-      <Header />
       <Main />
     </Box>
   );

@@ -9,7 +9,6 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { usersFetch, usersReset } from "../redux/reducers/users";
 import { postsFetch } from "../redux/reducers/posts";
 import { commentsFetch, commentsReset } from "../redux/reducers/comments";
-import Header from "../components/Header";
 import Main from "../components/singlPost/Main";
 
 export default function SinglePost(): JSX.Element {
@@ -48,9 +47,7 @@ export default function SinglePost(): JSX.Element {
 
   return (
     <Box component="div">
-      <Header />
       <Main id={params.id || ""} />
     </Box>
   );
 }
-

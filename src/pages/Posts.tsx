@@ -5,7 +5,6 @@ import { useAppDispatch } from "../redux/hooks";
 import { usersFetch } from "../redux/reducers/users";
 import { commentsFetch } from "../redux/reducers/comments";
 import { postsFetch } from "../redux/reducers/posts";
-import Header from "../components/Header";
 import Main from "../components/posts/Main";
 
 export default function (): JSX.Element {
@@ -19,7 +18,6 @@ export default function (): JSX.Element {
 
   return (
     <Box component="div">
-      <Header />
       <Main />
     </Box>
   );

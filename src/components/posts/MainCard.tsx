@@ -14,7 +14,7 @@ export default function MainCard(post: PropPostsCard): JSX.Element {
   return (
     <Card sx={{ minWidth: 275, maxWidth: 400, m: "2rem" }}>
       <CardActions>
-        <Link to={`${post.id}`} className="LinkLine TextEll PostsPad">
+        <Link to={`/posts/${post.id}`} className="LinkLine TextEll PostsPad">
           {post.title}
         </Link>
       </CardActions>
@@ -26,7 +26,7 @@ export default function MainCard(post: PropPostsCard): JSX.Element {
       <CardActions
         sx={{ display: "flex", justifyContent: "space-between", p: "1rem" }}
       >
-        <Link to={`../users/${post.user.id}`} className="LinkLine">
+        <Link to={`/users/${post.user.id}`} className="LinkLine">
           By {post.user.name}
         </Link>
         <Badge badgeContent={post.countComments} color="info">
