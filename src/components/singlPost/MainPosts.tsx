@@ -5,7 +5,7 @@ import { PropPost } from "../../types/Props";
 
 export default function MainPosts(post: PropPost): JSX.Element {
   return (
-    <Link to={`../${post.id}`} className="Link" style={{ width: "95%" }}>
+    <Link to={`/posts/${post.id}`} className="Link" style={{ width: "95%" }}>
       <Card sx={{ padding: "1rem", margin: "1rem 0" }}>
         <Typography
           variant="h5"

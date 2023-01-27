@@ -29,7 +29,7 @@ export default function MainCard(user: PropUsersCard): JSX.Element {
       </CardContent>
       <hr style={{ width: "90%", color: "lightgray" }} />
       <CardActions className="TextCard TextLeft">
-        <Link to={"../posts/"} className="LinkLine">
+        <Link to={"/posts"} className="LinkLine">
           {`${user.countPosts} ${user.countPosts === 1 ? "post" : "posts"}`}
         </Link>
       </CardActions>
