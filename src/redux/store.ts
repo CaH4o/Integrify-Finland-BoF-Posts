@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+
 import commentsReducer from "./reducers/comments";
 import postsReducer from "./reducers/posts";
 import usersReducer from "./reducers/users";
