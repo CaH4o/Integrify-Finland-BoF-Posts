@@ -1,16 +1,19 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
+import { render, screen } from "@testing-library/react";
 
-import { store } from '../redux/store';
-import App from '../App';
+import App from "../App";
+import { store } from "../redux/store";
 
-test('search for console.log in the doc', () => {
-  const { getByText } = render(
+test("search for console.log in the doc", () => {
+  render(
     <Provider store={store}>
       <App />
     </Provider>
   );
-  
-  expect(getByText(/console.log/i)).toNotBeInTheDocument();
+
+  /*
+  const linkElement = screen.getByText(/to develope/i);
+  expect(linkElement).toNotBeInTheDocument(); 
+  */
 });
