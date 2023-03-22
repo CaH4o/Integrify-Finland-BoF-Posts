@@ -14,8 +14,14 @@ describe("Suite of Comment reducer", function () {
     expect(store.getState().commentsReducer.data.length).toBe(0);
   });
 
-  test("Comment reducer / fatchAll", function () {
+  test("Comment reducer / fatch all", function () {
     store.dispatch(commentsFetch(""));
     expect(store.getState().commentsReducer.data.length).toBeGreaterThan(0);
+  });
+
+  test("Comment reducer / reset", function () {
+    store.dispatch(commentsFetch(""));
+    store.dispatch(commentsReset());
+    expect(store.getState().commentsReducer.data.length).toBe(0);
   });
 });
