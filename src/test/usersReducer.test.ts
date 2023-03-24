@@ -12,13 +12,13 @@ describe("Suite of User reducer", function () {
     expect(store.getState().usersReducer.data.length).toBe(0);
   });
 
-  test("User reducer / fatch all", function () {
-    store.dispatch(usersFetch(""));
+  test("User reducer / fatch all", async function () {
+    await store.dispatch(usersFetch(""));
     expect(store.getState().usersReducer.data.length).toBeGreaterThan(0);
   });
 
-  test("User reducer / reset", function () {
-    store.dispatch(usersFetch(""));
+  test("User reducer / reset", async function () {
+    await store.dispatch(usersFetch(""));
     store.dispatch(usersReset());
     expect(store.getState().usersReducer.data.length).toBe(0);
   });
