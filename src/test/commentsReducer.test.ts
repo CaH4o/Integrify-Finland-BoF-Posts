@@ -30,7 +30,7 @@ describe("Suite of Comment reducer", function () {
     expect(store.getState().commentsReducer.data.length).toBe(0);
   });
 
-  test("Comment reducer / post", async function () {
+   test("Comment reducer / post", async function () {
     await store.dispatch(commentsFetch(""));
     const commentsLengthBefor = store.getState().commentsReducer.data.length;
     const comment: Comment = { 
@@ -42,5 +42,16 @@ describe("Suite of Comment reducer", function () {
     await store.dispatch(commentPost(comment));
     const commentsLengthfter = store.getState().commentsReducer.data.length;
     expect(commentsLengthfter).toBe(commentsLengthBefor + 1);
+  });
+
+  test("Comment reducer / delete", async function () {
+    // 
+    await store.dispatch(commentsFetch(""));
+    const commentsLengthBefor = store.getState().commentsReducer.data.length;
+    const comment: Comment = store.getState().commentsReducer.data[0];   
+    await store.dispatch(commentDeleteThunk(comment.id.toString()));
+    store.dispatch(commentDelete(comment));
+    const commentsLengthfter = store.getState().commentsReducer.data.length;
+    expect(commentsLengthfter).toBe(commentsLengthBefor - 1);
   });
 });
